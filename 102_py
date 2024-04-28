@@ -1,0 +1,53 @@
+import os
+import shutil
+
+source="C:/Users/Admin/Downloads"
+img_destination="C:/Users/Admin/Desktop/C Pro/C102_P/C102_image"
+doc_destination="C:/Users/Admin/Desktop/C Pro/C102_P/C102_doucment"
+
+list_of_files=os.listdir(source)
+#print(list_of_files)
+
+for file_name in list_of_files:
+    name,extension=os.path.splitext(file_name)
+    #  print(name)
+    #  print(extension)
+    if extension=="":
+        continue
+    if extension in [".gif",".png",".jpg",".jpeg",".jfif"]:
+        path1=source + '/' + file_name
+        path2=img_destination + '/' + "imagefiles"
+        path3=img_destination + '/' + "imagefiles" + '/' + file_name
+       # print ("path1",path1)
+       # print("path3",path3)
+        if os.path.exists(path2):
+            print("Moving" + file_name)
+            shutil.move(path1,path3)
+        else:
+           os.mkdir(path2)
+           print("Moving" + file_name)
+           shutil.move(path1,path3)
+
+list_of_files_doc=os.listdir(source)
+#print(list_of_files_doc)
+
+for file_name_doc in list_of_files:
+    name,extension=os.path.splitext(file_name_doc)
+    #  print(name)
+    #  print(extension)
+    if extension=="":
+        continue
+    if extension in [".txt",".doc",".docx",".pdf",".pptx",".xlsx"]:
+        path4=source + '/' + file_name_doc
+        path5=doc_destination + '/' + "doucmentfiles"
+        path6=doc_destination + '/' + "doucmentfiles" + '/' + file_name_doc
+        # print ("path4",path4)
+        # print("path6",path6)
+        if os.path.exists(path5):
+            print("Moving" + file_name_doc+".....")
+            shutil.move(path4,path6)
+        else:
+           os.mkdir(path5)
+           print("Moving" + file_name_doc+".....")
+           shutil.move(path4,path6)
+
